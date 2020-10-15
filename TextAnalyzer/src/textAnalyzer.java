@@ -75,18 +75,14 @@ public class textAnalyzer extends Application {
 		return false;
 	}
 	
-	public HashMap<String, Integer> countOccur(String[] arrStr) {
+	public static HashMap<String, Integer> countOccur(String[] arrStr) {
 		HashMap<String, Integer> temp = new HashMap<String, Integer>();
 		for (String word : arrStr) {
 			if (checkDuplicates(word) == true) {
 				int n = temp.get(word);
 				temp.replace(word, n+1);
-				setWord(word);
-				setCount(n);
 			} else {
 				temp.put(word, 1);
-				setWord(word);
-				setCount(1);
 			};
 		}
 		return sortByOccur(temp);	
@@ -139,8 +135,7 @@ public class textAnalyzer extends Application {
 			String temp1 = str.replaceAll("[-,.;:!?]+", " ");
 			String temp2 = temp1.replaceAll("[\\t\\n\\r]+", " ");
 			String[] arrStr = temp2.toLowerCase().split("[\\s]+");
-			textAnalyzer count = new textAnalyzer();
-			count.countOccur(arrStr);	
+			countOccur(arrStr);	
 			
 		}
 		catch(IOException ioe) {
