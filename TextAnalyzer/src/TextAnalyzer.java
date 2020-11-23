@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
 
-public class textAnalyzer extends Application {
+public class TextAnalyzer extends Application {
 	private static ListView<String> listView = new ListView<String>();
 	private static String word;
 	private static String cnt;
@@ -85,16 +85,14 @@ public class textAnalyzer extends Application {
 				temp.put(word, 1);
 			};
 		}
-		return sortByOccur(temp);	
-	}
-	
-	public static HashMap<String, Integer> sortByOccur(HashMap<String, Integer> temp) {
-		//sorts hashmap into a LinkedHashMap with descending order by value
+		//sort by most frequently occurring words
 		temp.entrySet()
 		.stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
 		.forEachOrdered(x -> sortedMap.put(x.getKey(), x.getValue()));	
-        return printToFile(sortedMap); 
+        return printToFile(sortedMap);		
 	}
+	
+	
 	
 	public static HashMap<String, Integer> printToFile(HashMap<String, Integer> temp) {
 		FileWriter output_file;
