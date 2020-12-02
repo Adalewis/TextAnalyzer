@@ -26,7 +26,6 @@ public class TextAnalyzer extends Application {
 	private static String cnt;
 	private static HashSet set = new HashSet();
 	private static LinkedHashMap<String, Integer> sortedMap = new LinkedHashMap<>();
-	private static HashMap<String, Integer> temp = new HashMap<String, Integer>();
 	public String getWord() {
 		return word;
 	}
@@ -75,8 +74,8 @@ public class TextAnalyzer extends Application {
 		primaryStage.setTitle("Word Occurences");
 		ObservableList<String> names = FXCollections.observableArrayList(
 				 );
-	    listView.setItems(names); 
-	    for (Map.Entry<String, Integer> entry : sortedMap.entrySet()) {
+	    	listView.setItems(names); 
+	    	for (Map.Entry<String, Integer> entry : sortedMap.entrySet()) {
 			setWord(entry.getKey());
 			setCount(entry.getValue());
 			String newStr = getWord() + " " + getCount();
@@ -85,12 +84,12 @@ public class TextAnalyzer extends Application {
 		listView.getItems().add(getWord());
 		listView.setPrefHeight(names.size()*20 + 2);
 		listView.setMaxSize(400, 960);
-	    VBox layout = new VBox(15);
-	    layout.setPadding(new Insets(5, 5, 5, 5));
-	    layout.getChildren().addAll(listView);
-	    layout.setStyle("-fx-background-color: BEIGE");
-	    //Setting the stage
-	    Scene scene = new Scene(layout, 800, 1000);
+	    	VBox layout = new VBox(15);
+	    	layout.setPadding(new Insets(5, 5, 5, 5));
+	    	layout.getChildren().addAll(listView);
+	    	layout.setStyle("-fx-background-color: BEIGE");
+	    	//Setting the stage
+	   	Scene scene = new Scene(layout, 800, 1000);
 		
 		primaryStage.setScene(scene);
 		primaryStage.show();	
@@ -138,7 +137,7 @@ public class TextAnalyzer extends Application {
 		temp.entrySet()
 		.stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
 		.forEachOrdered(x -> sortedMap.put(x.getKey(), x.getValue()));	
-        return printToFile(sortedMap); 
+        	return printToFile(sortedMap); 
 	}
 	/**
 	 * Results of word occurrence count are stored on an output file.
